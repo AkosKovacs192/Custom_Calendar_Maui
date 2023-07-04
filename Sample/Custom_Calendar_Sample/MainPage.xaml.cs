@@ -7,7 +7,8 @@
         public MainPage()
         {
             InitializeComponent();
-            new Custom_Calendar_Library.Calendar();
+            var a = new Custom_Calendar_Library.Calendar();
+            var b = a.Monts;
         }
 
        
