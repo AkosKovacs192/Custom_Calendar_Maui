@@ -27,14 +27,15 @@ namespace Custom_Calendar_Library
             DateOnly date = new DateOnly(dateTime.Year, dateTime.Month, dateTime.Day);
             int days = DateTime.DaysInMonth(date.Year, date.Month);
             for (int day = 1; day <= days; day++)
-                Days.Add(new Day(new DateOnly(date.Year, date.Month, day)));
-
-
+            {
+                IDay _day = new Day(new DateOnly(date.Year, date.Month, day));
+                _day.Activate();
+                Days.Add(_day);
+            }
 
             DateTime prevousMonth = dateTime;
             while (Days.First().GetIndexOfTheWeek() != 1)
             {
-
                 prevousMonth = prevousMonth.AddDays(-1);
                 Days.Insert(0, new Day(new DateOnly(prevousMonth.Year, prevousMonth.Month, prevousMonth.Day)));
             }

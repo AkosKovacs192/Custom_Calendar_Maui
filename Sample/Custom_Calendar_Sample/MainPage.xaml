@@ -3,11 +3,27 @@
     x:Class="Custom_Calendar_Sample.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:day="clr-namespace:Custom_Calendar_Library;assembly=Custom_Calendar_Library"
+    xmlns:vm="clr-namespace:Custom_Calendar_Sample"
     Shell.NavBarIsVisible="false">
 
-    <Label
-        HorizontalTextAlignment="Center"
-        Text="Custom Calendar Sample"
-        VerticalTextAlignment="Center" />
+    <StackLayout>
+        <Label
+            HorizontalTextAlignment="Center"
+            Text="Custom Calendar Sample"
+            VerticalTextAlignment="Center" />
+
+
+        <ListView ItemsSource="{Binding Days}">
+            <ListView.ItemTemplate x:DataType="day:Day">
+                <DataTemplate>
+                    <ViewCell>
+                        <Label Text="{Binding Date}" />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
 
 </ContentPage>

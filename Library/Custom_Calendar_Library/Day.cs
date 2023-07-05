@@ -23,14 +23,16 @@ namespace Custom_Calendar_Library
             this.DateOnly = new DateOnly(dateTime.Year,dateTime.Month,dateTime.Day);
             this.DayOfTheWeek = dateTime.DayOfWeek.ToString("d");
             this.IndexDayOfTheWeek = (int)dateTime.DayOfWeek;
+            this.Date = dateTime.Day;
         }
 
-        private bool Selected {  get; set; }
-        private DateTime DateTime { get; set; }
-        private DateOnly DateOnly { get; set; }
-        private string DayOfTheWeek { get; set; }
-        private int IndexDayOfTheWeek { get; set; }
-        private bool Active { get; set; }
+        public bool Selected {  get; set; }
+        public DateTime DateTime { get; set; }
+        public DateOnly DateOnly { get; set; }
+        public int Date { get; set; }
+        public string DayOfTheWeek { get; set; }
+        public int IndexDayOfTheWeek { get; set; }
+        public bool Active { get; set; }
    
         public void Select() { Selected = true; }
         public void DeSelect() { Selected = false; }

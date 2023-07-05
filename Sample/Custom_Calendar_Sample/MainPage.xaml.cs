@@ -7,8 +7,8 @@
         public MainPage()
         {
             InitializeComponent();
-            var a = new Custom_Calendar_Library.Calendar();
-            var b = a.Monts;
+            BindingContext = new MainPageViewModel();
+            
         }
 
        

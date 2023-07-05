@@ -8,6 +8,14 @@ namespace Custom_Calendar_Library.Interfaces
 {
     public interface IDay
     {
+        public  DateTime DateTime {  get;  }
+        public  DateOnly DateOnly {  get;  }
+
+        public int Date { get; }
+        public bool Selected { get; }
+        public string DayOfTheWeek { get;  }
+        public int IndexDayOfTheWeek { get;  }
+        public bool Active { get;  }
 
         public void Select();
         public void DeSelect();
