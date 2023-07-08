@@ -8,22 +8,68 @@
     Shell.NavBarIsVisible="false">
 
     <StackLayout>
-        <Label
-            HorizontalTextAlignment="Center"
-            Text="Custom Calendar Sample"
-            VerticalTextAlignment="Center" />
 
 
-        <ListView ItemsSource="{Binding Days}">
-            <ListView.ItemTemplate x:DataType="day:Day">
-                <DataTemplate>
-                    <ViewCell>
-                        <Label Text="{Binding Date}" />
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+
+        <Grid
+            Padding="10"
+            ColumnDefinitions="*,*,*,*,*,*,*"
+            HorizontalOptions="Center"
+            RowDefinitions="Auto,*">
+
+            <Label HorizontalTextAlignment="Start" Text="Monday" />
+            <Label
+                Grid.Column="1"
+                HorizontalTextAlignment="Start"
+                Text="Tuesday" />
+            <Label
+                Grid.Column="2"
+                HorizontalTextAlignment="Start"
+                Text="Wednesday" />
+            <Label
+                Grid.Column="3"
+                HorizontalTextAlignment="Start"
+                Text="Thursday" />
+            <Label
+                Grid.Column="4"
+                HorizontalTextAlignment="Start"
+                Text="Friday" />
+            <Label
+                Grid.Column="5"
+                HorizontalTextAlignment="Start"
+                Text="Saturday" />
+
+            <Label
+                Grid.Column="6"
+                HorizontalTextAlignment="Start"
+                Text="Sunday" />
+
+            <CollectionView
+                Grid.Row="1"
+                Grid.ColumnSpan="7"
+                ItemsSource="{Binding Days}"
+                SelectionMode="None">
+                <CollectionView.ItemTemplate x:DataType="day:Day" BackgroundColor="White">
+                    <DataTemplate>
+                        <CollectionView
+                            ItemsLayout="HorizontalList"
+                            ItemsSource="{Binding .}"
+                            SelectionMode="None">
+                            <CollectionView.ItemTemplate x:DataType="day:Day" BackgroundColor="White">
+                                <DataTemplate>
+                                    <Grid Padding="10">
+                                        <Label Text="{Binding Date}" />
+                                    </Grid>
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
     </StackLayout>
+
 
 
 </ContentPage>

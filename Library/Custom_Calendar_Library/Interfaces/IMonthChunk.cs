@@ -12,5 +12,7 @@ namespace Custom_Calendar_Library.Interfaces
         public List<IDay> GetAllDays();
         public List<IDay> GetSelectedDays();
         public List<IDay> GetActiveDays();
+
+        public List<IDay[]> GetWeeks();
     }
 }

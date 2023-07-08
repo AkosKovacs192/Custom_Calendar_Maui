@@ -21,7 +21,7 @@ namespace Custom_Calendar_Library
         {
             this.DateTime = dateTime;
             this.DateOnly = new DateOnly(dateTime.Year,dateTime.Month,dateTime.Day);
-            this.DayOfTheWeek = dateTime.DayOfWeek.ToString("d");
+            this.DayOfTheWeek = dateTime.DayOfWeek.ToString();
             this.IndexDayOfTheWeek = (int)dateTime.DayOfWeek;
             this.Date = dateTime.Day;
         }

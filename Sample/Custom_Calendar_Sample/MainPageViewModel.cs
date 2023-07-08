@@ -15,7 +15,7 @@ namespace Custom_Calendar_Sample
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string name = "") =>
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        public List<IDay> Days
+        public List<IDay[]> Days
         {
             get => _days;
             set
@@ -23,10 +23,10 @@ namespace Custom_Calendar_Sample
                 _days = value; OnPropertyChanged(nameof(Days));
             }
         }
-        private List<IDay> _days { get; set; }
+        private List<IDay[]> _days { get; set; }
         public MainPageViewModel()
         {
-            Days = new Custom_Calendar_Library.Calendar().Monts.FirstOrDefault().GetAllDays();
+            Days = new Custom_Calendar_Library.Calendar().Monts.FirstOrDefault().GetWeeks();
             
         }
 

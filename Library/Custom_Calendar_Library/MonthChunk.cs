@@ -33,11 +33,15 @@ namespace Custom_Calendar_Library
                 Days.Add(_day);
             }
 
-            DateTime prevousMonth = dateTime;
+            DateTime oneMonthAgo = dateTime.AddMonths(-1);
+            int daysinpervmonth = DateTime.DaysInMonth(oneMonthAgo.Year, oneMonthAgo.Month);
+
+            DateTime prevousMonth = new DateTime(oneMonthAgo.Year, oneMonthAgo.Month, daysinpervmonth);
             while (Days.First().GetIndexOfTheWeek() != 1)
             {
-                prevousMonth = prevousMonth.AddDays(-1);
+              
                 Days.Insert(0, new Day(new DateOnly(prevousMonth.Year, prevousMonth.Month, prevousMonth.Day)));
+                prevousMonth = prevousMonth.AddDays(-1);
             }
             DateTime nextMonth = new DateTime(Days.Last().GetDateTime().Year, Days.Last().GetDateTime().Month, Days.Last().GetDateTime().Day);
             while (Days.Last().GetIndexOfTheWeek() != 0)
@@ -50,5 +54,27 @@ namespace Custom_Calendar_Library
         public List<IDay> GetSelectedDays() { return new List<IDay>(); }
         public List<IDay> GetActiveDays() { return new List<IDay>(); }
 
+
+        public List<IDay[]> GetWeeks()
+        {
+
+            int i = 0;
+            IDay[] Week = new IDay[7];
+            List<IDay[]> ListofWeeks =  new List<IDay[]>();
+            foreach (IDay d in Days)
+            {
+                Week[i++] = d;
+                if(i == 7)
+                {
+                    i = 0;
+                    ListofWeeks.Add(Week);
+                    Week = new IDay[7];
+                }
+
+            }
+
+
+            return ListofWeeks;
+        }
     }
 }
