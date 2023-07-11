@@ -11,14 +11,20 @@ namespace Custom_Calendar_Library
     {
         private List<IDay> Days { get; set; }
 
-        public MonthChunk(DateTime dateTime) { 
-            
+        public DateTime DateTime { get; set; }
+        public DateOnly DateOnly { get; set; }
+
+        public MonthChunk(DateTime dateTime) {
+
+            DateTime = dateTime;
+            DateOnly = new DateOnly(dateTime.Year, dateTime.Month, 1);
             GenerateChunk(dateTime);
         }
 
         public MonthChunk(DateOnly dateOnly){
-            
-            GenerateChunk(new DateTime(dateOnly.Year, dateOnly.Month, dateOnly.Day));
+
+            this.DateTime = new DateTime(dateOnly.Year, dateOnly.Month, dateOnly.Day);
+            GenerateChunk(this.DateTime);
         }
 
         private void GenerateChunk(DateTime dateTime) {

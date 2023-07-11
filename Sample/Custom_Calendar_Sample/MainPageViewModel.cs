@@ -24,9 +24,20 @@ namespace Custom_Calendar_Sample
             }
         }
         private List<IDay[]> _days { get; set; }
+
+        public IMonthChunk Month { 
+            get => _month;
+            set
+            {
+                _month = value; OnPropertyChanged(nameof(Month));
+            }
+        }
+        private IMonthChunk _month { get; set; }
+
         public MainPageViewModel()
         {
-            Days = new Custom_Calendar_Library.Calendar().Monts.FirstOrDefault().GetWeeks();
+            Month = new Custom_Calendar_Library.Calendar().Monts.FirstOrDefault();
+            Days = Month.GetWeeks();
             
         }
 

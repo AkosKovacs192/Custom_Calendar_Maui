@@ -1,4 +1,5 @@
 ﻿using Custom_Calendar_Library.Interfaces;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,8 +25,14 @@ namespace Custom_Calendar_Library
             this.DayOfTheWeek = dateTime.DayOfWeek.ToString();
             this.IndexDayOfTheWeek = (int)dateTime.DayOfWeek;
             this.Date = dateTime.Day;
+            IsToday = dateTime.Day == DateTime.Now.Day && DateTime.Month == DateTime.Now.Month && DateTime.Year == DateTime.Now.Year;
+            if(IsToday)
+            {
+               // this.IsToday = false;
+            }
         }
 
+        public bool IsToday { get; set; }
         public bool Selected {  get; set; }
         public DateTime DateTime { get; set; }
         public DateOnly DateOnly { get; set; }

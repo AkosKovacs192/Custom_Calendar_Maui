@@ -11,6 +11,7 @@ namespace Custom_Calendar_Library.Interfaces
         public  DateTime DateTime {  get;  }
         public  DateOnly DateOnly {  get;  }
 
+        public bool IsToday { get; }
         public int Date { get; }
         public bool Selected { get; }
         public string DayOfTheWeek { get;  }
