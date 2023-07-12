@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Custom_Calendar_Library.Interfaces
+namespace Custom_Calendar_Maui_Libary.Business.Interfaces
 {
     public interface IMonthChunk
     {

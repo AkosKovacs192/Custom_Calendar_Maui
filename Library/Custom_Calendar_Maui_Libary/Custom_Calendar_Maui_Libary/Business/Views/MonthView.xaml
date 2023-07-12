@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="Custom_Calendar_Maui_Libary.Business.Views.MonthView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:Custom_Calendar_Maui_Libary.Business.Views">
+    <ContentView.Content>
+
+
+
+        <Grid HeightRequest="400" WidthRequest="400">
+            <CollectionView
+                HorizontalOptions="Center"
+                ItemsSource="{Binding Days}"
+                SelectionMode="Single"
+                VerticalOptions="Center">
+                <CollectionView.Header>
+                    <Label HorizontalTextAlignment="Center" Text="asd" />
+                </CollectionView.Header>
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="7" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <views:DayView />
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+
+
+
+
+
+    </ContentView.Content>
+
+</ContentView>

@@ -53,7 +53,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\Library\Custom_Calendar_Library\Custom_Calendar_Library.csproj" />
+	  <ProjectReference Include="..\..\Library\Custom_Calendar_Maui_Libary\Custom_Calendar_Maui_Libary\Custom_Calendar_Maui_Libary.csproj" />
 	</ItemGroup>
 
 </Project>

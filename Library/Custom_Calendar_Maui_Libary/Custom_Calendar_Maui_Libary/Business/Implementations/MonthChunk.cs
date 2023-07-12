@@ -1,11 +1,11 @@
-﻿using Custom_Calendar_Library.Interfaces;
+﻿using Custom_Calendar_Maui_Libary.Business.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Custom_Calendar_Library
+namespace Custom_Calendar_Maui_Libary.Business.Implementations
 {
     public class MonthChunk : IMonthChunk
     {
@@ -14,20 +14,23 @@ namespace Custom_Calendar_Library
         public DateTime DateTime { get; set; }
         public DateOnly DateOnly { get; set; }
 
-        public MonthChunk(DateTime dateTime) {
+        public MonthChunk(DateTime dateTime)
+        {
 
             DateTime = dateTime;
             DateOnly = new DateOnly(dateTime.Year, dateTime.Month, 1);
             GenerateChunk(dateTime);
         }
 
-        public MonthChunk(DateOnly dateOnly){
+        public MonthChunk(DateOnly dateOnly)
+        {
 
             this.DateTime = new DateTime(dateOnly.Year, dateOnly.Month, dateOnly.Day);
             GenerateChunk(this.DateTime);
         }
 
-        private void GenerateChunk(DateTime dateTime) {
+        private void GenerateChunk(DateTime dateTime)
+        {
 
             Days = new List<IDay>();
             DateOnly date = new DateOnly(dateTime.Year, dateTime.Month, dateTime.Day);
@@ -45,7 +48,7 @@ namespace Custom_Calendar_Library
             DateTime prevousMonth = new DateTime(oneMonthAgo.Year, oneMonthAgo.Month, daysinpervmonth);
             while (Days.First().GetIndexOfTheWeek() != 1)
             {
-              
+
                 Days.Insert(0, new Day(new DateOnly(prevousMonth.Year, prevousMonth.Month, prevousMonth.Day)));
                 prevousMonth = prevousMonth.AddDays(-1);
             }
@@ -66,11 +69,11 @@ namespace Custom_Calendar_Library
 
             int i = 0;
             IDay[] Week = new IDay[7];
-            List<IDay[]> ListofWeeks =  new List<IDay[]>();
+            List<IDay[]> ListofWeeks = new List<IDay[]>();
             foreach (IDay d in Days)
             {
                 Week[i++] = d;
-                if(i == 7)
+                if (i == 7)
                 {
                     i = 0;
                     ListofWeeks.Add(Week);

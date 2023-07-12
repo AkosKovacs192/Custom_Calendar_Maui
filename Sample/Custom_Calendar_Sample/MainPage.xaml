@@ -3,57 +3,22 @@
     x:Class="Custom_Calendar_Sample.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:day="clr-namespace:Custom_Calendar_Library;assembly=Custom_Calendar_Library"
+    xmlns:views="clr-namespace:Custom_Calendar_Maui_Libary.Business.Views;assembly=Custom_Calendar_Maui_Libary"
     xmlns:vm="clr-namespace:Custom_Calendar_Sample"
     Shell.NavBarIsVisible="false">
 
-    <StackLayout VerticalOptions="Center">
 
 
-
-        <Grid
+    <Grid>
+        <views:MonthView
             HorizontalOptions="Center"
-            RowDefinitions="Auto,Auto,*"
-            VerticalOptions="Center">
+            MonthToShow="2/2/2023"
+            VerticalOptions="Center" />
+    </Grid>
 
 
-            <Grid ColumnDefinitions="*,*,*,*,*,*,*">
-                <Label HorizontalTextAlignment="Start" Text="M" />
-                <Label Grid.Column="1" Text="T" />
-                <Label Grid.Column="2" Text="W" />
-                <Label Grid.Column="3" Text="T" />
-                <Label Grid.Column="4" Text="F" />
-                <Label Grid.Column="5" Text="S" />
-                <Label Grid.Column="6" Text="S" />
 
-            </Grid>
 
-            <CollectionView
-                Grid.Row="2"
-                Grid.ColumnSpan="7"
-                ItemsSource="{Binding Days}"
-                SelectionMode="None">
-
-                <CollectionView.ItemTemplate x:DataType="day:Day" BackgroundColor="White">
-                    <DataTemplate>
-                        <CollectionView
-                            ItemsLayout="HorizontalList"
-                            ItemsSource="{Binding .}"
-                            SelectionMode="None">
-                            <CollectionView.ItemTemplate x:DataType="day:Day" BackgroundColor="White">
-                                <DataTemplate>
-                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                        <Grid BackgroundColor="LightGreen" IsVisible="{Binding IsToday}" />
-                                        <Label Text="{Binding Date}" />
-                                    </Grid>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </Grid>
-    </StackLayout>
 
 
 

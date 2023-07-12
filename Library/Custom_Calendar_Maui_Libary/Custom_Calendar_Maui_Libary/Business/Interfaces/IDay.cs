@@ -4,19 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Custom_Calendar_Library.Interfaces
+namespace Custom_Calendar_Maui_Libary.Business.Interfaces
 {
     public interface IDay
     {
-        public  DateTime DateTime {  get;  }
-        public  DateOnly DateOnly {  get;  }
+        public DateTime DateTime { get; }
+        public DateOnly DateOnly { get; }
 
         public bool IsToday { get; }
         public int Date { get; }
         public bool Selected { get; }
-        public string DayOfTheWeek { get;  }
-        public int IndexDayOfTheWeek { get;  }
-        public bool Active { get;  }
+        public string DayOfTheWeek { get; }
+        public int IndexDayOfTheWeek { get; }
+        public bool Active { get; }
 
         public void Select();
         public void DeSelect();
@@ -36,7 +36,7 @@ namespace Custom_Calendar_Library.Interfaces
         /// ...
         /// </summary>
         /// <returns></returns>
-        int GetIndexOfTheWeek();        
+        int GetIndexOfTheWeek();
         bool IsActive();
         void Activate();
         void Deactivate();
