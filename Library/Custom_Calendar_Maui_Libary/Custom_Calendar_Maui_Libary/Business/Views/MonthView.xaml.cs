@@ -8,6 +8,21 @@ namespace Custom_Calendar_Maui_Libary.Business.Views;
 public partial class MonthView : ContentView, INotifyPropertyChanged
 {
 
+    public Command PreviousMonthCommand => _previousMonthCommand ?? (_previousMonthCommand = new Command(() =>
+    {
+        MonthToShow = MonthToShow.AddMonths(-1);
+
+
+
+    }));
+    private Command _previousMonthCommand;
+
+    public Command NextMonthCommand => _nextMonthCommand ?? (_nextMonthCommand = new Command(() =>
+    {
+        MonthToShow = MonthToShow.AddMonths(1);
+
+    }));
+    private Command _nextMonthCommand;
     public DateTime MonthToShow
     {
         get => _timeToShow;
@@ -18,6 +33,35 @@ public partial class MonthView : ContentView, INotifyPropertyChanged
         }
     }
     private DateTime _timeToShow { get; set; }
+
+    public bool ShowDayOfWeekHeader
+    {
+        get => _showDayOfWeekHeader;
+        set { _showDayOfWeekHeader = value; OnPropertyChanged(nameof(ShowDayOfWeekHeader)); }
+    }
+    private bool _showDayOfWeekHeader = true;
+
+    public int CalendarWith
+    {
+        get => _calendarWith;
+        set
+        {
+            if (value == 0) value = 400;
+            _calendarWith = value; OnPropertyChanged(nameof(CalendarWith));
+        }
+    }
+    private int _calendarWith = 400;
+
+    public int CalendarHeight
+    {
+        get => _calendarHeight;
+        set
+        {
+            if (value == 0) value = 400;
+            _calendarHeight = value; OnPropertyChanged(nameof(CalendarHeight));
+        }
+    }
+    private int _calendarHeight = 700;
 
     public event PropertyChangedEventHandler PropertyChanged;
     public void OnPropertyChanged([CallerMemberName] string name = "") =>

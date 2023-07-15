@@ -9,12 +9,25 @@
 
 
 
-    <Grid>
+
+
+
+
+    <StackLayout Margin="50">
+
         <views:MonthView
+            CalendarHeight="350"
             HorizontalOptions="Center"
-            MonthToShow="2/2/2023"
-            VerticalOptions="Center" />
-    </Grid>
+            MonthToShow="1/2/2023"
+            ShowDayOfWeekHeader="True" />
+
+    </StackLayout>
+
+
+
+
+
+
 
 
 

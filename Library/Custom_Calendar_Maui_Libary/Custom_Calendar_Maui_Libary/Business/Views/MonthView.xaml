@@ -8,15 +8,70 @@
 
 
 
-        <Grid HeightRequest="400" WidthRequest="400">
+        <Grid
+            HorizontalOptions="Center"
+            RowDefinitions="Auto,Auto,Auto"
+            WidthRequest="{Binding CalendarWith}">
+            <Grid ColumnDefinitions="*,*,*">
+                <Button Command="{Binding PreviousMonthCommand}" Text="prev" />
+                <Label
+                    Grid.Column="1"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding MonthToShow, StringFormat='{0:MMMM yyyy}'}"
+                    VerticalTextAlignment="Center" />
+                <Button
+                    Grid.Column="2"
+                    Command="{Binding NextMonthCommand}"
+                    Text="next" />
+
+            </Grid>
+            <Grid
+                Grid.Row="1"
+                ColumnDefinitions="*,*,*,*,*,*,*"
+                IsVisible="{Binding ShowDayOfWeekHeader}">
+                <Label
+                    Grid.Column="0"
+                    HorizontalTextAlignment="Center"
+                    Text="M"
+                    VerticalTextAlignment="Center" />
+                <Label
+                    Grid.Column="1"
+                    HorizontalTextAlignment="Center"
+                    Text="T"
+                    VerticalTextAlignment="Center" />
+                <Label
+                    Grid.Column="2"
+                    HorizontalTextAlignment="Center"
+                    Text="W"
+                    VerticalTextAlignment="Center" />
+                <Label
+                    Grid.Column="3"
+                    HorizontalTextAlignment="Center"
+                    Text="T"
+                    VerticalTextAlignment="Center" />
+                <Label
+                    Grid.Column="4"
+                    HorizontalTextAlignment="Center"
+                    Text="F"
+                    VerticalTextAlignment="Center" />
+                <Label
+                    Grid.Column="5"
+                    HorizontalTextAlignment="Center"
+                    Text="S"
+                    VerticalTextAlignment="Center" />
+                <Label
+                    Grid.Column="6"
+                    HorizontalTextAlignment="Center"
+                    Text="S"
+                    VerticalTextAlignment="Center" />
+            </Grid>
             <CollectionView
+                Grid.Row="2"
+                HeightRequest="{Binding CalendarHeight}"
                 HorizontalOptions="Center"
                 ItemsSource="{Binding Days}"
                 SelectionMode="Single"
-                VerticalOptions="Center">
-                <CollectionView.Header>
-                    <Label HorizontalTextAlignment="Center" Text="asd" />
-                </CollectionView.Header>
+                VerticalOptions="Start">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical" Span="7" />
                 </CollectionView.ItemsLayout>
